@@ -29,6 +29,43 @@ class Solution {
         return fib(n-1)+fib(n-2);
     }
 }
+//printSubsequences with sum k
+import java.util.*;
+
+class Solution {
+
+    public static void printSubsequences(int i, int arr[], int n,
+                                         List<Integer> current,
+                                         int sum, int k) {
+
+        // Base case
+        if (i == n) {
+            if (sum == k) {
+                System.out.println(current);
+            }
+            return;
+        }
+
+        // Pick the element
+        current.add(arr[i]);
+        printSubsequences(i + 1, arr, n, current, sum + arr[i], k);
+
+        // Backtrack
+        current.remove(current.size() - 1);
+
+        // Not pick the element
+        printSubsequences(i + 1, arr, n, current, sum, k);
+    }
+
+    public static void main(String[] args) {
+
+        int arr[] = {10,1,2,7,6,1,5};
+        int k = 8;
+
+        printSubsequences(0, arr, arr.length, new ArrayList<>(), 0, k);
+    }
+}
+
 //gfg checkSubsequenceSum exist or not
 import java.util.*;
 class Solution {
