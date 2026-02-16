@@ -29,4 +29,31 @@ class Solution {
         return fib(n-1)+fib(n-2);
     }
 }
-
+//gfg checkSubsequenceSum
+import java.util.*;
+class Solution {
+    public static boolean isThere(int i,int arr[],List<Integer>ans,int n,int s,int k){
+        if(i>=n){
+            if(s==k){
+                return true;
+            }
+            return false;
+        }
+        ans.add(arr[i]);
+        s+=arr[i];
+        if(isThere(i+1,arr,ans,n,s,k)){
+            return true;
+        }
+        ans.remove(ans.size()-1);
+        s-=arr[i];
+        if(isThere(i+1,arr,ans,n,s,k)){
+            return true;
+        }
+        return false;
+    }
+    public static boolean checkSubsequenceSum(int N, int[] arr, int K) {
+        // code here
+        int n=arr.length;
+        return isThere(0,arr,new ArrayList<Integer>(),n,0,K);
+    }
+}
