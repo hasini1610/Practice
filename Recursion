@@ -29,7 +29,7 @@ class Solution {
         return fib(n-1)+fib(n-2);
     }
 }
-//gfg checkSubsequenceSum
+//gfg checkSubsequenceSum exist or not
 import java.util.*;
 class Solution {
     public static boolean isThere(int i,int arr[],List<Integer>ans,int n,int s,int k){
