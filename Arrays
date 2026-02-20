@@ -84,3 +84,72 @@ class Solution {
 
     }
 }
+class Solution {
+    public static ArrayList<Integer> findUnion(int a[], int b[]) {
+        // code here
+        int n1=a.length;
+        int n2=b.length;
+        ArrayList<Integer>ans=new ArrayList<>();
+        int i=0,j=0;
+        while(i<n1 && j<n2){
+            if(a[i]<=b[j]){
+                if(!ans.contains(a[i])){
+                    ans.add(a[i]);
+                }
+                i++;
+            }
+            else{
+                if(!ans.contains(b[j])){
+                    ans.add(b[j]);
+                 
+                }
+                j++;
+            }
+        }
+        while(i<n1){
+            if(!ans.contains(a[i])){
+                ans.add(a[i]);
+             
+            }
+            i++;
+        }
+          while(j<n2){
+            if(!ans.contains(b[j])){
+                ans.add(b[j]);
+            }
+            j++;
+        }
+        return ans;
+    }
+}
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+    int i=0;
+    int j=0;
+    ArrayList<Integer> union=new ArrayList<>();
+    while(i<m && j<n){
+    if(nums1[i]<=nums2[j]){
+        union.add(nums1[i]);
+        i++;
+    }
+    else{
+        
+        union.add(nums2[j]);
+        j++;
+    }
+    }
+    while(i<m){
+        union.add(nums1[i]);
+        i++;
+    }
+    while(j<n){
+        union.add(nums2[j]);
+        j++;
+    }
+    int k=0;
+    for(int x:union){
+        nums1[k]=x;
+        k++;
+    }
+    }
+}
