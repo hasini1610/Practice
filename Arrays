@@ -1,1 +1,86 @@
+class Solution {
+    public static int largest(int[] arr) {
+        // code here
+        int n=arr.length;
+        int large=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            if(arr[i]>large){
+                large=arr[i];
+            }
+        }
+        return large;
+    }
+}
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        // code here
+        int n=arr.length;
+        int largest=arr[0];
+        int secLarge=-1;
+        for(int i=0;i<n;i++){
+            if(arr[i]>largest){
+                secLarge=largest;
+                largest=arr[i];
+            }
+            else if(arr[i]>secLarge && arr[i]<largest){
+                secLarge=arr[i];
+            }
+        }
+        return secLarge;
+    }
+}
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int n=nums.length;
+        int i=0;
+        for(int j=i+1;j<n;j++){
+            if(nums[i]!=nums[j]){
+                i++;
+                nums[i]=nums[j];
+            }
+        }
+        return i+1;
+    }
+}
+class Solution {
+    public void rev(int nums[],int s,int e){
+        while(s<e){
+            int temp=nums[s];
+            nums[s]=nums[e];
+            nums[e]=temp;
+            s++;
+            e--;
+        }
+    }
+    public void rotate(int[] nums, int k) {
+        int n=nums.length;
+        k=k%n;
+        rev(nums,0,n-1);
+        rev(nums,0,k-1);
+        rev(nums,k,n-1);
+    }
+}
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int j=-1;
+        int n=nums.length;
+        for(int i=0;i<n;i++){
+            if(nums[i]==0){
+                j=i;
+                break;
+            }
+        }
+        if(j==-1){
+            return;
+        }
+        for(int k=j+1;k<n;k++){
+            if(nums[k]!=0){
+               int temp=nums[k];
+               nums[k]=nums[j];
+               nums[j]=temp;
+                j++;
+            }
+        }
 
+    }
+}
